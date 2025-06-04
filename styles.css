@@ -180,15 +180,49 @@ body {
 }
 
 /* Responsive design */
+/* Menu toggle button styles */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+    z-index: 1000;
+}
+
+.menu-toggle .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px 0;
+    background-color: #fff;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
 @media (max-width: 768px) {
     .header {
         padding: 0.5rem;
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .logo-container {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: row;
+        text-align: left;
         gap: 0.5rem;
     }
 
@@ -197,31 +231,54 @@ body {
     }
 
     .logo-text {
-        text-align: center;
+        text-align: left;
     }
 
     .logo-container h1 {
-        font-size: 2rem;
+        font-size: 1.5rem;
         margin-bottom: 0.2rem;
     }
 
     .tagline {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
+    }
+
+    .menu-toggle {
+        display: block;
     }
 
     .nav-menu {
-        width: 100%;
-        margin-top: 0.5rem;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background-color: #1a1a1a;
+        padding: 80px 20px 20px;
+        transition: right 0.3s ease-in-out;
+        z-index: 999;
+    }
+
+    .nav-menu.active {
+        right: 0;
     }
 
     .nav-menu ul {
-        flex-direction: row;
-        justify-content: space-around;
-        padding: 0.5rem 0;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
     }
 
     .nav-menu li {
-        margin: 0;
+        margin: 1.5rem 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-menu a {
+        font-size: 1.2rem;
+        display: block;
+        padding: 0.5rem;
     }
 
     .hero-section {
@@ -290,3 +347,4 @@ body {
         padding: 8px 16px;
     }
 }
+
